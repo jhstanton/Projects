@@ -9,7 +9,7 @@ main =
   do 
   putStr "Enter any alphabetical string to encrypt: "
   str <- getLine
-  putStr "Enter the positive integer key <= 26: "
+  putStr "Enter the positive integer key: "
   keyStr <- getLine
   let key = read keyStr::Int
   let strs = words str
@@ -31,5 +31,8 @@ shift word amt =
 
 encrypt word key = shift word key 
 
-decrypt word key = shift word (26 - key)
+decrypt word key = 
+  if key > 26 
+  then decrypt word (key - 26)
+  else shift word (26 - key)
   
