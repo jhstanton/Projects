@@ -1,0 +1,9 @@
+{-
+  Prime Factorization
+-}
+
+
+-- make a prime wheel 
+wheel = 2:3:5 : (aux 5 (cycle [2,4]))
+  where aux n (x:xs) = let next = n + x
+                       (next) : (aux next xs)
