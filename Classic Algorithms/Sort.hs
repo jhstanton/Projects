@@ -33,4 +33,6 @@ bubbleSort xs = bubble xs [] xs
       then bubble (y:xs) (x:new) orig
       else bubble (x:xs) (y:new) orig
 
+-- test cases
 xs = [200, 1, 20, 3, 5, -1, -2, -2, -200, 5, 7, 9, 30, 9]
+ys = [ -1, 5, 10, 2, 3, 20, 3, -1]
