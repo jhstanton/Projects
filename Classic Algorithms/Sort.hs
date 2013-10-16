@@ -1,8 +1,8 @@
 {-
   Sort.hs
  
-  Implements functions for merge sort
-  and bubble sort
+  Implements functions for merge sort,
+  bubble sort and quick sort
 
 -}
 
@@ -32,6 +32,26 @@ bubbleSort xs = bubble xs [] xs
       if x < y
       then bubble (y:xs) (x:new) orig
       else bubble (x:xs) (y:new) orig
+
+
+quickSort []  = []
+quickSort [x] = [x]
+quickSort xs  = quickSort less ++ (pivot : quickSort more)
+  where
+    pivotPoint = div (length xs) 2
+    pivot = xs !! pivotPoint
+    -- remove the pivot element from xs
+    (front, back) = splitAt pivotPoint xs
+    xsNoPivot = if null back
+                then front
+                else front ++ (tail back)
+    (less, more) = partition xsNoPivot [] []
+    
+    partition [] less more     = (less, more)
+    partition (y:ys) less more =
+      if y <= pivot 
+      then partition ys (y:less) more
+      else partition ys less (y:more)   
 
 -- test cases
 xs = [200, 1, 20, 3, 5, -1, -2, -2, -200, 5, 7, 9, 30, 9]
