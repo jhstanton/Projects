@@ -44,7 +44,7 @@ descriptors (Recipe _ ds _ _ )        = ds
 writeRec recipeFile recipe = writeFile recipeFile (show recipe) 
 
 
--- manages the recipes, uses newtype since only one field is requiredo
+-- manages the recipes, uses newtype since only one field is required
 newtype Manager = Manager [Recipe] 
                   deriving (Show)
 
