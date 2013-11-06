@@ -6,6 +6,9 @@
 
 -}
 
+{-
+  Standard merge sort using the heap to store new lists
+-}
 mergeSort []  = []
 mergeSort [x] = [x] 
 mergeSort xs  = merge (mergeSort left) (mergeSort right) where
@@ -14,11 +17,16 @@ mergeSort xs  = merge (mergeSort left) (mergeSort right) where
   right = drop halfLength xs
   merge ys []         = ys
   merge [] zs         = zs
-  merge (y:ys) (z:zs) = 
+  merge (y:ys) (z:zs) = --run through list once to do each divided merge and final merge
     if y < z
     then y : merge ys (z:zs)
     else z : merge (y:ys) zs
 
+{-
+  Less than normal bubble sort, swaps elements of a list and recalls the 
+  sorting algorithm if not sorted. Same basic premise - run through the list
+  and swap elements as spotted out of order. Not very efficient
+-}
 bubbleSort xs = bubble xs [] xs where
   bubble [] [] [] = []
   bubble [x] new orig      = 
@@ -31,7 +39,11 @@ bubbleSort xs = bubble xs [] xs where
     then bubble (y:xs) (x:new) orig
     else bubble (x:xs) (y:new) orig
 
-
+{-
+  Again, not quite a standard quickSort since this is not in place. Still uses a 'pivot'
+  to sort around. Similar to mergesort in speed and algorithm, but I expect this is slower
+  in this case since it has to repeatedly find the element defined at the pivot point. 
+-}
 quickSort []  = []
 quickSort [x] = [x]
 quickSort xs  = quickSort less ++ (pivot : quickSort more) where
