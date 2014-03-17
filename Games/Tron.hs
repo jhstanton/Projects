@@ -177,7 +177,7 @@ runAI (bike1@(Bike bkcolor dir pos@(x,y) aiCoords),
                                False, False, True, True, rs, evadeCount) in  (aiCollide, playerCollide)
       gatherMoves :: Bike -> Bike -> [(Dir, (Int, Int))]
       gatherMoves (Bike _ _ (x,y) aicoords) (Bike _ _ playerPos playerCoords) =
-        if lastEvade + r == 7
+        if lastEvade + r == 7 && lastEvade > 1 
         then filterMoves potentialAIMoves
         else filterMoves $ (dir, nextMove) : potentialAIMoves     
       -- evadeCount is used to help make a natural turn when confronted with situations calling for evasive maneuvers        
