@@ -3,6 +3,12 @@
   Simple Tron clone using the Gloss library.
 
   Jim Stanton
+
+  The variants in the game AI are based on an infinite sequence
+  of pseudo random numbers that is 'dropped' by several functions
+  in the main loop, including whenever the player presses a key.
+  I thought this was an interesting way to add some legitimate randomness
+  while remaining within pure functions.
 -}
 
 import Data.Monoid
